@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 # initial player stats
 const _INIT_PLAYER_STATE: PlayerStates = PlayerStates.IDLE
-const _INIT_MOVE_SPEED: float = 100.0
+const _INIT_MOVE_SPEED: float = 12500.0
 const _INIT_TRI_PLACE_SPEED: float = 2.0
 
 # player stats
@@ -28,6 +28,9 @@ enum PlayerStates {
 ## Updates at the start of every physics tick.
 @onready var prev_player_state: PlayerStates = _INIT_PLAYER_STATE
 
+# input variables
+var input_move_dir: Vector2 = Vector2.ZERO
+
 
 func _ready() -> void:
 	pass
@@ -38,4 +41,13 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_movement_stuff(delta)
 	pass
+
+
+func _movement_stuff(delta: float) -> void:
+	input_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	velocity = input_move_dir * move_speed * delta
+	
+	move_and_slide()
