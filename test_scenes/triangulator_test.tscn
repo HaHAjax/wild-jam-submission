@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqtovq3augcvx"]
+
+[ext_resource type="PackedScene" uid="uid://bbyc6usywy81l" path="res://scenes/triangulator/triangulator.tscn" id="1_mjmwg"]
+[ext_resource type="PackedScene" uid="uid://lq6x7ao5m56v" path="res://scenes/objectives/objective.tscn" id="2_q3n27"]
+
+[node name="TriangulatorTest" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Triangulator" parent="." instance=ExtResource("1_mjmwg")]
+position = Vector2(-69, -51)
+
+[node name="TheObject" parent="." instance=ExtResource("2_q3n27")]
+position = Vector2(43, -53)
