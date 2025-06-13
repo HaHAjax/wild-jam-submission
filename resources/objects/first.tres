@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ScanObject" load_steps=3 format=3 uid="uid://iae5fyr1odu"]
+
+[ext_resource type="Script" uid="uid://dvinfq6cck7ov" path="res://scripts/resource/object.gd" id="1_uv04p"]
+[ext_resource type="Texture2D" uid="uid://bbwn2pp7orqam" path="res://icon.svg" id="2_cnemb"]
+
+[resource]
+script = ExtResource("1_uv04p")
+name = "FirstObject"
+sprite = ExtResource("2_cnemb")
+metadata/_custom_type_script = "uid://dvinfq6cck7ov"

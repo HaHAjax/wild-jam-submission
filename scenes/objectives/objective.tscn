@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://lq6x7ao5m56v"]
+
+[ext_resource type="Script" uid="uid://bkk5f3xd117ef" path="res://scenes/objectives/objective.gd" id="1_7k2ag"]
+[ext_resource type="Resource" uid="uid://iae5fyr1odu" path="res://resources/objects/first.tres" id="2_wh3gt"]
+
+[node name="TheObject" type="Node2D"]
+script = ExtResource("1_7k2ag")
+object = ExtResource("2_wh3gt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
