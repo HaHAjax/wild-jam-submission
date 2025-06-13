@@ -14,6 +14,7 @@ var objective_shape: Shape2D
 
 func _init() -> void:
 	add_to_group("objectives")
+	add_to_group("first") # TODO: remove this later
 
 
 func _process(_delta: float) -> void:
