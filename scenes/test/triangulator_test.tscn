@@ -8,7 +8,7 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Triangulator" parent="." instance=ExtResource("1_85vdd")]
+[node name="Triangulator" parent="." instance=ExtResource("1_mjmwg")]
 position = Vector2(-69, -51)
 
 [node name="Triangulator2" parent="." instance=ExtResource("1_85vdd")]

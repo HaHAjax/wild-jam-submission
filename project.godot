@@ -13,13 +13,18 @@ config_version=5
 config/name="Wild Jam Submission"
 run/main_scene="uid://ds5ebdt67ehho"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/image="uid://77kpnwd240hs"
+boot_splash/image="uid://towkmn16vpd8"
 config/icon="res://icon.svg"
 
 [debug]
 
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=1
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
 
 [input]
 
