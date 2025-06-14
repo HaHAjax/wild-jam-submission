@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 func change_target(target_string : String) -> void:
 	current_target = target_string
 
-
+# TODO: remove if we don't use this function
 func get_distance_to_objective() -> float:
 	var p_target : Objective = get_tree().get_first_node_in_group(current_target)
 	var dist : float = global_position.distance_to(p_target.global_position)

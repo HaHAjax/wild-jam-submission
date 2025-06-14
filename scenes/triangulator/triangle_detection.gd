@@ -12,6 +12,10 @@ func _ready() -> void:
 	update_polygon()
 
 
+func _physics_process(delta: float) -> void:
+	detect_objects()
+
+
 func update_polygon() -> void:
 	var polygon_array : Array[Vector2]
 	
@@ -19,6 +23,14 @@ func update_polygon() -> void:
 		polygon_array.append(tri.global_position)
 	
 	collision.polygon = polygon_array
+
+
+func detect_objects() -> void:
+	var detected : Array
 	
-	# TODO: must be called after objectives are spawned
-	print("a", get_overlapping_areas())
+	for item : Area2D in get_overlapping_areas():
+		detected.append(item.owner)
+	
+	print(detected)
+		
+	
