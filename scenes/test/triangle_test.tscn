@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://duwrbt27mfl0o"]
+[gd_scene load_steps=6 format=3 uid="uid://duwrbt27mfl0o"]
 
 [ext_resource type="PackedScene" uid="uid://bbyc6usywy81l" path="res://scenes/triangulator/triangulator.tscn" id="1_l01g2"]
+[ext_resource type="PackedScene" uid="uid://p52d2umlyihg" path="res://player.tscn" id="1_v7x8d"]
 [ext_resource type="PackedScene" uid="uid://xid1ndyw3ge6" path="res://scenes/triangulator/triangle_area.tscn" id="2_dkdq8"]
 [ext_resource type="PackedScene" uid="uid://lq6x7ao5m56v" path="res://scenes/objectives/objective.tscn" id="3_dkdq8"]
 [ext_resource type="PackedScene" uid="uid://cs2dhpe072uob" path="res://scenes/player_ui.tscn" id="4_7cojw"]
 
 [node name="TriangleTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_v7x8d")]
 
 [node name="Triangulator" parent="." instance=ExtResource("1_l01g2")]
 position = Vector2(76, 72)
@@ -15,12 +18,11 @@ position = Vector2(125, 265)
 
 [node name="Triangulator3" parent="." instance=ExtResource("1_l01g2")]
 position = Vector2(373, 115)
-mouse_move = true
 
-[node name="TheObject" parent="." instance=ExtResource("3_dkdq8")]
+[node name="Objective2" parent="." instance=ExtResource("3_dkdq8")]
 position = Vector2(208, 143)
 
-[node name="TriangleArea" parent="." instance=ExtResource("2_dkdq8")]
+[node name="DetectionArea" parent="." instance=ExtResource("2_dkdq8")]
 
 [node name="Objective" parent="." instance=ExtResource("3_dkdq8")]
 position = Vector2(186, 190)

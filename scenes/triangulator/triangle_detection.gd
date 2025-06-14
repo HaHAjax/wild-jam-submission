@@ -16,12 +16,15 @@ var number_of_objects : int:
 
 @export var collision : CollisionPolygon2D
 
+
 func _init() -> void:
-	add_to_group("triangle_area") # TODO: rename this?
+	add_to_group("detection_area") # TODO: rename this?
+	
 
 func _ready() -> void:
 	for tri : Triangulator in get_tree().get_nodes_in_group("triangulators"):
 		triangulators.append(tri)
+		update_polygon()
 
 
 func _physics_process(delta: float) -> void:

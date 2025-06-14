@@ -12,6 +12,7 @@ const _INIT_TRI_PLACE_SPEED: float = 2.0
 @export_group("Equipment Stats")
 @export var tri_place_speed: float = _INIT_TRI_PLACE_SPEED
 
+@onready var interact_area : Area2D = %InteractArea
 
 
 # player states enum
@@ -33,6 +34,13 @@ enum PlayerStates {
 # input variables
 var input_move_dir: Vector2 = Vector2.ZERO
 
+# helper variables?
+var held_object : Triangulator #TODO: change this if we are able to hold other things
+
+
+func _init() -> void:
+	add_to_group("player")
+
 
 func _ready() -> void:
 	pass
@@ -44,7 +52,26 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	_movement_stuff(delta)
-	pass
+	
+	if Input.is_action_just_pressed("interact"):
+		interact()
+
+
+func interact() -> void:
+	# TODO: priority system if we have more than one thing in area
+	if !held_object:
+		var thing : Area2D
+		
+		if !interact_area.get_overlapping_areas().is_empty():
+			thing = interact_area.get_overlapping_areas()[0]
+			
+			if thing is Triangulator:
+				held_object = thing as Triangulator
+				held_object.pick_up()
+
+	else:
+		held_object.drop()
+		held_object = null
 
 
 func _movement_stuff(delta: float) -> void:
