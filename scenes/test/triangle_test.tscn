@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://duwrbt27mfl0o"]
+
+[ext_resource type="PackedScene" uid="uid://bbyc6usywy81l" path="res://scenes/triangulator/triangulator.tscn" id="1_l01g2"]
+[ext_resource type="Script" uid="uid://begw5qkaxaeaf" path="res://scenes/triangulator/triangle_detection.gd" id="2_dkdq8"]
+[ext_resource type="PackedScene" uid="uid://lq6x7ao5m56v" path="res://scenes/objectives/objective.tscn" id="3_dkdq8"]
+
+[node name="TriangleTest" type="Node2D"]
+
+[node name="Triangulator" parent="." instance=ExtResource("1_l01g2")]
+position = Vector2(76, 72)
+
+[node name="Triangulator2" parent="." instance=ExtResource("1_l01g2")]
+position = Vector2(125, 265)
+
+[node name="Triangulator3" parent="." instance=ExtResource("1_l01g2")]
+position = Vector2(373, 115)
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("collision")]
+script = ExtResource("2_dkdq8")
+collision = NodePath("CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+
+[node name="TheObject" parent="." instance=ExtResource("3_dkdq8")]
+position = Vector2(208, 143)
