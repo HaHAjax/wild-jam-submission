@@ -2,11 +2,14 @@ class_name TriangleDetection
 extends Area2D
 
 var triangulators : Array[Triangulator]
-var player_ui : PlayerUI:
+
+
+@onready var player_ui : PlayerUI:
 	get():
 		if !player_ui:
 			player_ui = get_tree().get_first_node_in_group("player_ui")
 		return player_ui
+	
 	
 var number_of_objects : int:
 	set(val):

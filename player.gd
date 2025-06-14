@@ -36,6 +36,7 @@ var input_move_dir: Vector2 = Vector2.ZERO
 
 # helper variables?
 var held_object : Triangulator #TODO: change this if we are able to hold other things
+var last_facing_direction : Vector2
 
 
 func _init() -> void:
@@ -76,6 +77,9 @@ func interact() -> void:
 
 func _movement_stuff(delta: float) -> void:
 	input_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if input_move_dir:
+		last_facing_direction = input_move_dir
 	
 	velocity = input_move_dir * move_speed * delta
 	
