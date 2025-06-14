@@ -14,8 +14,12 @@ position = Vector2(125, 265)
 
 [node name="Triangulator3" parent="." instance=ExtResource("1_l01g2")]
 position = Vector2(373, 115)
+mouse_move = true
 
 [node name="TheObject" parent="." instance=ExtResource("3_dkdq8")]
 position = Vector2(208, 143)
 
 [node name="TriangleArea" parent="." instance=ExtResource("2_dkdq8")]
+
+[node name="Objective" parent="." instance=ExtResource("3_dkdq8")]
+position = Vector2(186, 190)

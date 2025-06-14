@@ -5,11 +5,12 @@ var triangulators : Array[Triangulator]
 
 @export var collision : CollisionPolygon2D
 
+func _init() -> void:
+	add_to_group("triangle_area") # TODO: rename this?
+
 func _ready() -> void:
 	for tri : Triangulator in get_tree().get_nodes_in_group("triangulators"):
 		triangulators.append(tri)
-	
-	update_polygon()
 
 
 func _physics_process(delta: float) -> void:
@@ -29,8 +30,9 @@ func detect_objects() -> void:
 	var detected : Array
 	
 	for item : Area2D in get_overlapping_areas():
-		detected.append(item.owner)
+		if item.owner is Objective:
+			detected.append(item.owner)
 	
-	print(detected)
+	print(detected.size())
 		
 	

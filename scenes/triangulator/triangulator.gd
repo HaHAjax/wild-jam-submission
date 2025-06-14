@@ -3,6 +3,9 @@ extends Node2D
 
 var target : Objective
 var current_target : String
+var triangle_area : TriangleDetection
+
+@export var mouse_move := false
 
 func _init() -> void:
 	add_to_group("triangulators")
@@ -10,10 +13,14 @@ func _init() -> void:
 
 func _ready() -> void:
 	current_target = "first" #TODO: remove this when we add the target menu
+	triangle_area = get_tree().get_first_node_in_group("triangle_area")
 
 
 func _physics_process(_delta: float) -> void:
-	pass
+	
+	if mouse_move:
+		global_position = get_global_mouse_position()
+		triangle_area.update_polygon()
 
 
 func change_target(target_string : String) -> void:

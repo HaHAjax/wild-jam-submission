@@ -12,6 +12,8 @@ const _INIT_TRI_PLACE_SPEED: float = 2.0
 @export_group("Equipment Stats")
 @export var tri_place_speed: float = _INIT_TRI_PLACE_SPEED
 
+
+
 # player states enum
 enum PlayerStates {
 	IDLE = 0,
