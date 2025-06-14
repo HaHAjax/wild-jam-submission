@@ -21,6 +21,7 @@ position = Vector2(115, -110)
 position = Vector2(43, -53)
 
 [node name="TriangleDetection" type="Area2D" parent="." node_paths=PackedStringArray("collision")]
+visible = false
 script = ExtResource("3_vnyrr")
 collision = NodePath("CollisionPolygon2D")
 

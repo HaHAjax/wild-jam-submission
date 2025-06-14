@@ -5,7 +5,7 @@ var target : Objective
 var current_target : String
 
 func _init() -> void:
-	add_to_group("triangulator")
+	add_to_group("triangulators")
 
 
 func _ready() -> void:
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	print(get_distance_to_objective())
+	pass
 
 
 func change_target(target_string : String) -> void:
@@ -21,8 +21,8 @@ func change_target(target_string : String) -> void:
 
 
 func get_distance_to_objective() -> float:
-	var target : Objective = get_tree().get_first_node_in_group(current_target)
-	var dist : float = global_position.distance_to(target.global_position)
+	var p_target : Objective = get_tree().get_first_node_in_group(current_target)
+	var dist : float = global_position.distance_to(p_target.global_position)
 	
 	return dist
 
@@ -32,17 +32,17 @@ func get_closest_objective() -> Objective:
 	
 	var objectives : Array[Objective]
 	
-	for object in get_tree().get_nodes_in_group("objectives"):
-		objectives.append(object)
+	for obj : Objective in get_tree().get_nodes_in_group("objectives"):
+		objectives.append(obj)
 	
 	if objectives.is_empty():
 		return
 		
 	var closest : Objective = objectives[0]
 	
-	for object in objectives:
-		if global_position.distance_to(object.global_position) < global_position.distance_to(closest.global_position):
-			closest = object
+	for obj : Objective in objectives:
+		if global_position.distance_to(obj.global_position) < global_position.distance_to(closest.global_position):
+			closest = obj
 	
 	return closest
 	
