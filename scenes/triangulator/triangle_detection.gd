@@ -2,6 +2,17 @@ class_name TriangleDetection
 extends Area2D
 
 var triangulators : Array[Triangulator]
+var player_ui : PlayerUI:
+	get():
+		if !player_ui:
+			player_ui = get_tree().get_first_node_in_group("player_ui")
+		return player_ui
+	
+var number_of_objects : int:
+	set(val):
+		number_of_objects = val
+		player_ui.update_label(number_of_objects)
+
 
 @export var collision : CollisionPolygon2D
 
@@ -33,6 +44,6 @@ func detect_objects() -> void:
 		if item.owner is Objective:
 			detected.append(item.owner)
 	
-	print(detected.size())
+	number_of_objects = detected.size()
 		
 	

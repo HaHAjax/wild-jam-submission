@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://duwrbt27mfl0o"]
+[gd_scene load_steps=5 format=3 uid="uid://duwrbt27mfl0o"]
 
 [ext_resource type="PackedScene" uid="uid://bbyc6usywy81l" path="res://scenes/triangulator/triangulator.tscn" id="1_l01g2"]
 [ext_resource type="PackedScene" uid="uid://xid1ndyw3ge6" path="res://scenes/triangulator/triangle_area.tscn" id="2_dkdq8"]
 [ext_resource type="PackedScene" uid="uid://lq6x7ao5m56v" path="res://scenes/objectives/objective.tscn" id="3_dkdq8"]
+[ext_resource type="PackedScene" uid="uid://cs2dhpe072uob" path="res://scenes/player_ui.tscn" id="4_7cojw"]
 
 [node name="TriangleTest" type="Node2D"]
 
@@ -23,3 +24,5 @@ position = Vector2(208, 143)
 
 [node name="Objective" parent="." instance=ExtResource("3_dkdq8")]
 position = Vector2(186, 190)
+
+[node name="PlayerUI" parent="." instance=ExtResource("4_7cojw")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs2dhpe072uob"]
+
+[ext_resource type="Script" uid="uid://djyghvb3gvg0c" path="res://scenes/player_ui/player_ui.gd" id="1_jkj6h"]
+
+[node name="PlayerUI" type="CanvasLayer" node_paths=PackedStringArray("label")]
+script = ExtResource("1_jkj6h")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
