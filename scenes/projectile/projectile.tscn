@@ -1,18 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://xdor17ty53l"]
+[gd_scene load_steps=6 format=3 uid="uid://xdor17ty53l"]
 
 [ext_resource type="Script" uid="uid://r3ikqkyv5hdi" path="res://scenes/projectile/projectile.gd" id="1_t8015"]
 [ext_resource type="Texture2D" uid="uid://dg4nuw50qygo8" path="res://art/projectile.png" id="2_2dulq"]
 
+[sub_resource type="Curve" id="Curve_2dulq"]
+_limits = [-0.5, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 4.02717, 0, 0, Vector2(0.234801, 0.662205), 1.86691, 1.86691, 0, 0, Vector2(0.787946, 0.494382), -3.77528, -3.77528, 0, 0, Vector2(0.92, -0.5), -11.0618, 0.0, 0, 0]
+point_count = 4
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_t8015"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2dulq"]
+radius = 45.0
+
 [node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 8
+motion_mode = 1
 script = ExtResource("1_t8015")
 sprite = NodePath("Sprite2D")
+trajectory = SubResource("Curve_2dulq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_2dulq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t8015")
+disabled = true
+
+[node name="ExplosionRadius" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+shape = SubResource("CircleShape2D_2dulq")

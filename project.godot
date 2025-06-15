@@ -16,6 +16,12 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://towkmn16vpd8"
 config/icon="res://icon.svg"
 
+[autoload]
+
+Singletons="*res://scripts/autoloads/singletons.gd"
+DebugDraw2D="*res://addons/debugdraw2d/DebugDraw2D.gd"
+SignalBus="*res://scripts/autoloads/signal_bus.gd"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=2
@@ -25,6 +31,10 @@ gdscript/warnings/inferred_declaration=1
 
 window/size/viewport_width=960
 window/size/viewport_height=540
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debugdraw2d/plugin.cfg")
 
 [input]
 
@@ -71,6 +81,7 @@ secondary_fire={
 2d_physics/layer_2="interactables"
 2d_physics/layer_3="objective"
 2d_physics/layer_4="destructible"
+2d_physics/layer_5="explosive"
 
 [rendering]
 
