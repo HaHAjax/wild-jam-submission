@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds5ebdt67ehho"]
+[gd_scene load_steps=7 format=3 uid="uid://ds5ebdt67ehho"]
 
 [ext_resource type="PackedScene" uid="uid://p52d2umlyihg" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bbyc6usywy81l" path="res://scenes/triangulator/triangulator.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://lq6x7ao5m56v" path="res://scenes/objectives/objective.tscn" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://xid1ndyw3ge6" path="res://scenes/triangulator/triangle_area.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://cs2dhpe072uob" path="res://scenes/player_ui.tscn" id="5_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(262, 126)
@@ -14,3 +18,22 @@ position = Vector2(0, 118)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="Triangulator" parent="." instance=ExtResource("2_lquwl")]
+position = Vector2(76, 72)
+
+[node name="Triangulator2" parent="." instance=ExtResource("2_lquwl")]
+position = Vector2(125, 265)
+
+[node name="Triangulator3" parent="." instance=ExtResource("2_lquwl")]
+position = Vector2(373, 115)
+
+[node name="Objective2" parent="." instance=ExtResource("3_7mycd")]
+position = Vector2(208, 143)
+
+[node name="DetectionArea" parent="." instance=ExtResource("4_272bh")]
+
+[node name="Objective" parent="." instance=ExtResource("3_7mycd")]
+position = Vector2(186, 190)
+
+[node name="PlayerUI" parent="." instance=ExtResource("5_5vw27")]

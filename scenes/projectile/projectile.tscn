@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xdor17ty53l"]
+
+[ext_resource type="Script" uid="uid://r3ikqkyv5hdi" path="res://scenes/projectile/projectile.gd" id="1_t8015"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8015"]
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_t8015")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t8015")

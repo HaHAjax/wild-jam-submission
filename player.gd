@@ -36,7 +36,7 @@ var input_move_dir: Vector2 = Vector2.ZERO
 
 # helper variables?
 var held_object : Triangulator #TODO: change this if we are able to hold other things
-var last_facing_direction : Vector2
+var last_facing_direction := Vector2(1,0)
 
 
 func _init() -> void:
