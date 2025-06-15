@@ -33,6 +33,7 @@ enum PlayerStates {
 
 # input variables
 var input_move_dir: Vector2 = Vector2.ZERO
+var using_controller : bool
 
 # helper variables?
 var held_object : Triangulator #TODO: change this if we are able to hold other things
@@ -42,8 +43,10 @@ var last_facing_direction : Vector2 = Vector2.RIGHT:
 		if held_object:
 			held_object.move()
 
+# Aiming Variables
 @onready var aim_indicator : PlayerAim = %PlayerAimIndicator
-var aim_direction : Vector2
+var last_moving_direction : Vector2 = Vector2.RIGHT
+var aim_direction : Vector2 = Vector2.RIGHT
 var aim_position : Vector2 = Vector2.RIGHT:
 	set(val):
 		aim_position = val
@@ -59,6 +62,13 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	pass
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		using_controller = false
+	elif event is InputEventJoypadMotion:
+		using_controller = true
 
 
 func _physics_process(delta: float) -> void:
@@ -86,11 +96,24 @@ func interact() -> void:
 		held_object = null
 
 
-func _aim_process(delta : float) -> void:
-	aim_direction = (get_global_mouse_position() - global_position).normalized()
+func _aim_process(_delta : float) -> void:
+	if velocity:
+		last_moving_direction = velocity.normalized()
+		
+	if using_controller:
+		var input_direction : Vector2 = Input.get_vector("right_joy_left", "right_joy_right", "right_joy_up", "right_joy_down")
+		
+		if input_direction:
+			aim_direction = input_direction.normalized()
+		else:
+			aim_direction = last_moving_direction
+	
+	else:
+		aim_direction = (get_global_mouse_position() - global_position).normalized()
+		
 	aim_position = global_position + aim_direction * 24.0
-	
-	
+
+
 func _movement_stuff(delta: float) -> void:
 	input_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
