@@ -15,3 +15,5 @@ func destroy_tiles(tiles_coords: Array[Vector2i]) -> void:
 	
 	for coord: Vector2i in tiles_coords:
 		erase_cell(coord)
+	
+	set_cells_terrain_connect(tiles_coords, 0, -1)
