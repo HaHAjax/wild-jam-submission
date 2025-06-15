@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://xdor17ty53l"]
+[gd_scene load_steps=4 format=3 uid="uid://xdor17ty53l"]
 
 [ext_resource type="Script" uid="uid://r3ikqkyv5hdi" path="res://scenes/projectile/projectile.gd" id="1_t8015"]
+[ext_resource type="Texture2D" uid="uid://dg4nuw50qygo8" path="res://art/projectile.png" id="2_2dulq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t8015"]
 
-[node name="Projectile" type="CharacterBody2D"]
+[node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_t8015")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2dulq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t8015")

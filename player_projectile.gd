@@ -5,9 +5,9 @@ extends Node
 
 @onready var player : Player = get_owner()
 
-var on_cooldown := false
-var cooldown := 1.0
-var remaining_cooldown := 0.0
+var on_cooldown : bool = false
+var cooldown : float = 1.0
+var remaining_cooldown : float = 0.0
 
 func _physics_process(delta: float) -> void:
 	
@@ -18,5 +18,4 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("secondary_fire"):
 		var proj : Projectile = projectile_scene.instantiate()
-		
 		get_tree().current_scene.add_child(proj)

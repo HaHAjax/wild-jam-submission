@@ -36,8 +36,18 @@ var input_move_dir: Vector2 = Vector2.ZERO
 
 # helper variables?
 var held_object : Triangulator #TODO: change this if we are able to hold other things
-var last_facing_direction := Vector2(1,0)
+var last_facing_direction : Vector2 = Vector2.RIGHT:
+	set(val):
+		last_facing_direction = val
+		if held_object:
+			held_object.move()
 
+@onready var aim_indicator : PlayerAim = %PlayerAimIndicator
+var aim_direction : Vector2
+var aim_position : Vector2 = Vector2.RIGHT:
+	set(val):
+		aim_position = val
+		aim_indicator.update_position()
 
 func _init() -> void:
 	add_to_group("player")
@@ -47,12 +57,13 @@ func _ready() -> void:
 	pass
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 func _physics_process(delta: float) -> void:
 	_movement_stuff(delta)
+	_aim_process(delta)
 	
 	if Input.is_action_just_pressed("interact"):
 		interact()
@@ -75,6 +86,11 @@ func interact() -> void:
 		held_object = null
 
 
+func _aim_process(delta : float) -> void:
+	aim_direction = (get_global_mouse_position() - global_position).normalized()
+	aim_position = global_position + aim_direction * 24.0
+	
+	
 func _movement_stuff(delta: float) -> void:
 	input_move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	

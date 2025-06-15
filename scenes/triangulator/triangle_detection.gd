@@ -30,7 +30,7 @@ func _ready() -> void:
 		update_polygon()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	detect_objects()
 
 
