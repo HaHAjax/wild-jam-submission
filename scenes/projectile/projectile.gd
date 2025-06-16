@@ -1,9 +1,12 @@
 class_name Projectile
 extends CharacterBody2D
 
-var max_speed : float = 400.0
+var speed : float = 200.0
 var direction : Vector2
 var traj_sample_point: float = 0.0
+var traj_height_scale: float = 100.0
+
+var simulated_3d_space: Vector3 = Vector3.ZERO
 
 @export var sprite : Sprite2D
 @export var trajectory: Curve
@@ -21,6 +24,8 @@ func _ready() -> void:
 	if player:
 		global_position = player.aim_position
 		direction = player.aim_direction
+		velocity = direction * speed
+		sprite.rotation = randf_range(-180.0, 180.0)
 	
 	pass
 
@@ -31,17 +36,17 @@ func _physics_process(delta: float) -> void:
 	# then, make the bomb move away from the player in the direction variable's direction.
 	
 	traj_sample_point += delta
+	#velocity = direction * 50
 	
-	# this just rotates the player
-	sprite.rotation_degrees += 5
+	#simulated_3d_space = Vector3(direction.x, -trajectory.sample(traj_sample_point), direction.y)
 	
 	if traj_sample_point >= 1.0:
-		velocity.x = move_toward(velocity.x, 0.0, delta * 2)
-		velocity.y -= delta
-		await get_tree().create_timer(0.5).timeout
+		#await get_tree().create_timer(0.1).timeout
 		explode()
-	else: # before the arc is done, this is run
-		self.velocity = trajectory.sample(traj_sample_point) * 250 * direction
+	elif traj_sample_point <= 0.95:
+		sprite.rotation_degrees += 5
+		var vertical: float = trajectory.sample(traj_sample_point)
+		sprite.position.y = -vertical * traj_height_scale
 		move_and_slide()
 
 
