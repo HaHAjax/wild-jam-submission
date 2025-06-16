@@ -52,6 +52,7 @@ var aim_position : Vector2 = Vector2.RIGHT:
 		aim_position = val
 		aim_indicator.update_position()
 
+
 func _init() -> void:
 	add_to_group("player")
 

@@ -26,14 +26,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# TODO: acceleration 
-	#velocity = max_speed * direction
-	#move_and_slide()
+	# TODO: make the bomb arc more accurate (using velocity)
+	# currently it's not good. we need to make it go in the direction where "up" in 3D would be, then back down.
+	# then, make the bomb move away from the player in the direction variable's direction.
 	
 	traj_sample_point += delta
 	
-	#self.velocity = trajectory.sample(traj_sample_point) * (direction * max_speed)
-	
+	# this just rotates the player
 	sprite.rotation_degrees += 5
 	
 	if traj_sample_point >= 1.0:
@@ -41,17 +40,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= delta
 		await get_tree().create_timer(0.5).timeout
 		explode()
-	else:
-		#self.velocity.y = -trajectory.sample(traj_sample_point) * 250
-		#self.velocity.x = trajectory.sample(traj_sample_point) * 100 * direction.x
+	else: # before the arc is done, this is run
 		self.velocity = trajectory.sample(traj_sample_point) * 250 * direction
-		
 		move_and_slide()
-	
-	
-	#self.position.y = -trajectory.sample(traj_sample_point) * 100
-	
-	
 
 
 func explode() -> void:
@@ -73,8 +64,8 @@ func explode() -> void:
 	
 	var overlapping_tiles: Array[Vector2i] = []
 	
-	for x in range(min(top_left.x, bottom_right.x), max(top_left.x, bottom_right.x) + 1):
-		for y in range(min(top_left.y, bottom_right.y), max(top_left.y, bottom_right.y) + 1):
+	for x: int in range(min(top_left.x, bottom_right.x), max(top_left.x, bottom_right.x) + 1):
+		for y: int in range(min(top_left.y, bottom_right.y), max(top_left.y, bottom_right.y) + 1):
 			var coords: Vector2i = Vector2i(x, y)
 			var global_coords: Vector2 = tilemap.to_global(tilemap.map_to_local(coords))
 			var distance: float = global_coords.distance_to(self.global_position)
@@ -85,9 +76,3 @@ func explode() -> void:
 	SignalBus.bomb_exploded.emit(self.global_position)
 	
 	queue_free()
-
-
-func check_if_top_terrain(node: Node2D) -> bool:
-	
-	
-	return false
