@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dtq2wdc03sfin"]
 
 [ext_resource type="Texture2D" uid="uid://dtt8cn31pfmdf" path="res://art/bottom.png" id="1_ispts"]
-[ext_resource type="Texture2D" uid="uid://cxhdigmwbxhp3" path="res://art/top.png" id="2_ntf3p"]
+[ext_resource type="Texture2D" uid="uid://bllth6g2fw4we" path="res://art/top.png" id="2_ntf3p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaiok"]
 resource_name = "Bottom"
@@ -715,6 +715,7 @@ texture = ExtResource("2_ntf3p")
 11:3/0/terrains_peering_bit/left_side = 0
 11:3/0/terrains_peering_bit/top_left_corner = 0
 11:3/0/terrains_peering_bit/top_side = 0
+10:1/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 8
