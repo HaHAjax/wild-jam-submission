@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xid1ndyw3ge6"]
 
-[ext_resource type="Script" uid="uid://begw5qkaxaeaf" path="res://scenes/triangulator/triangle_detection.gd" id="1_m6tag"]
+[ext_resource type="Script" uid="uid://begw5qkaxaeaf" path="res://scripts/triangulator/triangle_detection.gd" id="1_m6tag"]
 
 [node name="TriangleArea" type="Area2D" node_paths=PackedStringArray("collision")]
 script = ExtResource("1_m6tag")

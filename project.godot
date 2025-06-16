@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Wild Jam Submission"
-run/main_scene="uid://ds5ebdt67ehho"
+run/main_scene="uid://2i2iidvfonmd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://towkmn16vpd8"
 config/icon="res://icon.svg"
@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Singletons="*res://scripts/autoloads/singletons.gd"
 DebugDraw2D="*res://addons/debugdraw2d/DebugDraw2D.gd"
 SignalBus="*res://scripts/autoloads/signal_bus.gd"
+GameManager="*res://scripts/autoloads/game_manager.gd"
 
 [debug]
 
@@ -31,6 +32,7 @@ gdscript/warnings/inferred_declaration=1
 
 window/size/viewport_width=960
 window/size/viewport_height=540
+window/size/resizable=false
 
 [editor_plugins]
 

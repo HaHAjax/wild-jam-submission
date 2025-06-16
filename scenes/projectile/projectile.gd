@@ -26,8 +26,6 @@ func _ready() -> void:
 		direction = player.aim_direction
 		velocity = direction * speed
 		sprite.rotation = randf_range(-180.0, 180.0)
-	
-	pass
 
 
 func _physics_process(delta: float) -> void:
