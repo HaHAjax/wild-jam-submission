@@ -24,6 +24,8 @@ func _ready() -> void:
 	if player:
 		global_position = player.aim_position
 		direction = player.aim_direction
+		$ExplosionRadius/CollisionShape2D.shape.radius = player.explosion_size
+		
 		velocity = direction * speed
 		sprite.rotation = randf_range(-180.0, 180.0)
 

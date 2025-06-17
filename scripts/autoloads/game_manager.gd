@@ -21,15 +21,22 @@ func _ready() -> void:
 	pass
 
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("debug_upgrade_bomb") and OS.has_feature("debug"):
+		if Singletons.player: Singletons.player.increase_explosion_tier()
+
+
 func start_game() -> void:
-	# get_tree().change_scene_to_packed() caused the Singletons autoload to not get anything, and this is my solution
+	# get_tree().change_scene_to_packed() caused the Singletons autoload to not find anything, so this is my solution
 	
 	main_scene_instance = MAIN_SCENE.instantiate()
 	
+	# get rid of the main menu scene
 	get_tree().get_root().get_child(-1).queue_free()
 	
 	get_tree().get_root().add_child(main_scene_instance)
 	
+	# set the current scene so other scripts dont break!
 	get_tree().current_scene = main_scene_instance
 	
 	Singletons.find_all_nodes()

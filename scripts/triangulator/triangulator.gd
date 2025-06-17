@@ -7,6 +7,8 @@ var detection_area : TriangleDetection
 var is_picked_up : bool = false
 var acceleration : float =  0.2
 
+@export var hold_distance: float = 72.0
+
 
 var player : Player:
 	get():
@@ -29,10 +31,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if is_picked_up:
-		pass
-		#var target_position : Vector2 = player.global_position + 48.0 * player.last_facing_direction
-		#global_position = lerp(global_position, target_position, acceleration)
-		#detection_area.update_polygon()
+		move()
 
 
 func change_target(target_string : String) -> void:
@@ -40,7 +39,7 @@ func change_target(target_string : String) -> void:
 
 
 func move() -> void:
-	var target_position : Vector2 = player.global_position + 72.0 * player.last_facing_direction
+	var target_position : Vector2 = player.global_position + (hold_distance * player.last_facing_direction)
 	global_position = lerp(global_position, target_position, acceleration)
 	detection_area.update_polygon()
 

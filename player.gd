@@ -37,11 +37,7 @@ var using_controller : bool
 
 # helper variables?
 var held_object : Triangulator #TODO: change this if we are able to hold other things
-var last_facing_direction : Vector2 = Vector2.RIGHT:
-	set(val):
-		last_facing_direction = val
-		if held_object:
-			held_object.move()
+var last_facing_direction : Vector2 = Vector2.RIGHT
 
 # Aiming Variables
 @onready var aim_indicator : PlayerAim = %PlayerAimIndicator
@@ -52,13 +48,18 @@ var aim_position : Vector2 = Vector2.RIGHT:
 		aim_position = val
 		aim_indicator.update_position()
 
+# explosion stuff for bombs
+var explosion_tier: int = 0
+var explosion_size: float = 0.0
+
 
 func _init() -> void:
 	add_to_group("player")
 
 
 func _ready() -> void:
-	pass
+	explosion_tier = ProgressManager.curr_explosive_tier
+	explosion_size = (explosion_tier * 5) + 15
 
 
 func _process(_delta: float) -> void:
@@ -91,7 +92,7 @@ func interact() -> void:
 			if thing is Triangulator:
 				held_object = thing as Triangulator
 				held_object.pick_up()
-
+	
 	else:
 		held_object.drop()
 		held_object = null
@@ -113,6 +114,21 @@ func _aim_process(_delta : float) -> void:
 		aim_direction = (get_global_mouse_position() - global_position).normalized()
 		
 	aim_position = global_position + aim_direction * 24.0
+
+
+func change_explosion_tier(new_tier: int) -> void:
+	if new_tier > ProgressManager.MAX_EXPLOSIVE_TIER: return
+	
+	explosion_tier = new_tier
+	explosion_size = (explosion_tier * 5) + 15
+
+
+func increase_explosion_tier() -> void:
+	if explosion_tier + 1 > ProgressManager.MAX_EXPLOSIVE_TIER: return
+	
+	explosion_tier += 1
+	explosion_size = (explosion_tier * 5) + 15
+	print(explosion_size)
 
 
 func _movement_stuff(delta: float) -> void:

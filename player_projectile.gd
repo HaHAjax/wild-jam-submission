@@ -9,6 +9,7 @@ var on_cooldown : bool = false
 var cooldown : float = 1.0
 var remaining_cooldown : float = 0.0
 
+
 func _physics_process(delta: float) -> void:
 	
 	if on_cooldown:
